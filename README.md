@@ -1,6 +1,6 @@
 ﻿# Upwork-Clone-Project
 
-[App Link](https://loquacious-biscochitos-b8888f.netlify.app/)
+[App Link](https://musical-starlight-0b5ee8.netlify.app/)
 
 ### Home Screen
 ![image](https://github.com/aman003malhotra/UpWorkCloneProject/assets/49841734/938c4f71-2671-40aa-aaac-67c97d1b6728)
