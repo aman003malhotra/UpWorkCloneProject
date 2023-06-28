@@ -20,7 +20,6 @@ const NewJob = ({match}) =>{
 
     const preload = (jobId) => {
         jobById(jobId).then(data => {
-            console.log(data)
         if (data.err) {
             setValues({ ...values, error: data.err });
         } else {
@@ -105,7 +104,7 @@ const NewJob = ({match}) =>{
         <div  style={{backgroundColor:"#1d4354"}}>
             <Menu />
         </div>
-        <Container style={{padding:"35px"}}>
+        <Container style={{padding:"35px", height:"100vh"}}>
             <Row >
                 <Col md={{ span: 6, offset: 3 }} style={{border:"2px solid black", padding:"30px", borderRadius:"7px"}}>
                     <h4 style={{ fontWeight:"900", paddingBottom:"10px"}}>Add a New Job</h4>
@@ -126,7 +125,7 @@ const NewJob = ({match}) =>{
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Type of Payment </Form.Label>
-                            <Form.Control as="select" onChange={handleChange("typeOfPayment")}>
+                            <Form.Control as="select" onChange={handleChange("typeOfPayment")} value={typeOfPayment}>
                                 <option>Select</option>
                                 <option value="Hourly">Hourly</option>
                                 <option value="Fixed">Fixed</option>
@@ -141,7 +140,7 @@ const NewJob = ({match}) =>{
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Experience Needed</Form.Label>
-                            <Form.Control as="select" onChange={handleChange("experienceNeeded")}>
+                            <Form.Control as="select" onChange={handleChange("experienceNeeded")} value={experienceNeeded}>
                                 <option>Select</option>
                                 <option value="Basic">Basic</option>
                                 <option value="Intermediate">Intermediate</option>

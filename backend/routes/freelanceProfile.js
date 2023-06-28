@@ -8,7 +8,9 @@ const { newProfile,
     updateProfile, 
     myProfile, 
     getProfile,
-    pushOfferInOffersList } = require("../controllers/freelanceProfile")
+    pushOfferInOffersList,
+    deleteProfile
+} = require("../controllers/freelanceProfile")
 
 router.param("userId", getUserById);
 router.param("profileId", getProfileById);
@@ -42,5 +44,10 @@ router.put(
     "/offer/:userId/:profileId",
     pushOfferInOffersList
 )
+
+router.delete(
+    "/profile/delete/:profileId",
+    deleteProfile
+);
 
 module.exports = router;

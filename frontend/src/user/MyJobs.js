@@ -21,8 +21,8 @@ const preload = () => {
         }
     });
 }
-const deleteThisJob = userId => {
-    deleteJob(userId).then(data => {
+const deleteThisJob = jobId => {
+    deleteJob(jobId).then(data => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -40,7 +40,7 @@ return(
     <div  style={{backgroundColor:"#1d4354"}}>
         <Menu />
     </div>
-    <Container style={{fontSize:"14px", margin:"5%"}}>
+    <Container style={{fontSize:"14px", margin:"auto", marginTop:"50px", height:"100vh"}}>
         <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{jobs.length>0 ? "Here's a List of all the Jobs You Uploaded" : "Sorry you created no job Make one!"}</h3>
         <Button variant="secondary" block>
             <Link 
@@ -51,7 +51,7 @@ return(
         </Button>
         {jobs.map((job,index)=>{
             return(
-                <Col md={{ span: 10, offset:3 }} style={{marginTop:"20px"}} key={index}>
+                <Col style={{marginTop:"20px"}} key={index}>
                 <Card border={'success'} >
                     <Card.Body>
                         <Card.Header style={{marginBottom:"20px",}}>

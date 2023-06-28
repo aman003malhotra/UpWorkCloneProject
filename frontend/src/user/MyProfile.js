@@ -31,7 +31,7 @@ return(
     <div  style={{backgroundColor:"#1d4354"}}>
         <Menu />
     </div>
-    <Container style={{fontSize:"14px", margin:"5%"}}>
+    <Container style={{fontSize:"14px", margin:"auto" ,marginTop:"50px", height:"100vh"}}>
         <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{profiles.length>0 ? `Here is your profile ${user.email}` : "Sorry you created no Profile Make one!"}</h3>
         {profiles.length === 0 && (
             <Button variant='secondary' block>
@@ -45,7 +45,7 @@ return(
         
         {profiles.map((profile,index)=>{
             return(
-                <Col md={{ span: 10, offset:3 }} style={{marginTop:"20px"}} key={index}>
+                <Col style={{marginTop:"20px"}} key={index}>
                 <Card border={'success'} >
                     <Card.Body>
                         <Card.Header style={{marginBottom:"20px",}}>

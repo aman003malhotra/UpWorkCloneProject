@@ -54,7 +54,6 @@ const UpdateProfile = ({ match }) =>{
         setValues({ ...values, error: false });
         updateProfile({ title,description, typeOfPayment, price, qualification, institution, availabilty}, match.params.profileId, token)
           .then(data => {
-            console.log(data)
             if (data.err) {
               setValues({ ...values, error: data.error, success: false });
             } else {
@@ -135,7 +134,7 @@ const UpdateProfile = ({ match }) =>{
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Type of Payment </Form.Label>
-                            <Form.Control as="select" onChange={handleChange("typeOfPayment")}>
+                            <Form.Control as="select" onChange={handleChange("typeOfPayment")} value={typeOfPayment}>
                                 <option>Select</option>
                                 <option value="Hourly">Hourly</option>
                                 <option value="Fixed">Fixed</option>
@@ -150,7 +149,7 @@ const UpdateProfile = ({ match }) =>{
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Qualification </Form.Label>
-                            <Form.Control as="select" onChange={handleChange("qualification")}>
+                            <Form.Control as="select" onChange={handleChange("qualification")} value={qualification}>
                                 <option>Select</option>
                                 <option value="Graduation">Graduation</option>
                                 <option value="Post Graduation">Post Graduation</option>
