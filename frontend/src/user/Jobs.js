@@ -40,11 +40,11 @@ return(
     <div  style={{backgroundColor:"#1d4354"}}>
         <Menu />
     </div>
-    <Container style={{fontSize:"14px", margin:"5%"}}>
-        <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>Here's a List of all the Jobs</h3>
+    <Container style={{fontSize:"14px", margin:"auto", marginTop:"50px", height:"100vh"}}>
+        <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{jobs.length>0 ? "Here's a List of all the Jobs" : "Sorry no jobs created Check again after some time"}</h3>
         {jobs.map((job,index)=>{
             return(
-                <Col md={{ span: 10, offset:3 }} style={{marginTop:"20px"}} key={index}>
+                <Col style={{marginTop:"20px"}} key={index}>
                 <Card border={'success'} >
                     <Card.Body>
                         <Card.Header style={{marginBottom:"20px",}}>

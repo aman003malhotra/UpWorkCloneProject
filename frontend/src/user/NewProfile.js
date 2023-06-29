@@ -32,7 +32,6 @@ const NewProfile = () =>{
         setValues({ ...values, error: false });
         newProfile({ title,description, typeOfPayment, price, qualification, institution, availabilty,}, user._id, token)
           .then(data => {
-            console.log(data)
             if (data.err) {
               setValues({ ...values, error: data.err, success: false });
             } else {

@@ -22,7 +22,6 @@ exports.allProfiles = (req,res) => {
                 error:"No Profiles"
         });
     } 
-      console.log(allprofiles)
         res.json(allprofiles);
     });
 }
@@ -57,6 +56,22 @@ exports.updateProfile = (req, res) => {
     res.json(updatedProfile);
     });
 };
+
+exports.deleteProfile = (req, res) => {
+  let profile = req.freelanceProfile;
+  profile.remove((err, deletedProfile) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Failed to delete the job"
+      });
+    }
+    res.json({
+      message: "Deletion was a success",
+      deletedProfile
+    });
+  });
+};
+
 
 exports.myProfile = (req,res) => {
   FreelanceProfile.find({user:req.profile._id}, (err,myProfile) => {

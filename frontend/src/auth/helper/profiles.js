@@ -26,6 +26,16 @@ export const newProfile = (profile, userId, token) => {
     .catch((err) => {console.log(err)});
 };
 
+export const deleteProfile = (profileId, next) => {
+    return fetch(`${API}/profile/delete/${profileId}`, {
+        method:"DELETE",
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
 export const myProfile = (userId) => {
     return fetch(`${API}/profile/${userId}`, {
         method: "GET",

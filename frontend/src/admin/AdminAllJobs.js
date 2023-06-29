@@ -20,8 +20,8 @@ const preload = () => {
         }
     });
 }
-const deleteThisJob = userId => {
-    deleteJob(userId).then(data => {
+const deleteThisJob = jobId => {
+    deleteJob(jobId).then(data => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -52,11 +52,11 @@ return(
             </Nav.Item>
         </Nav>
     </Container>
-    <Container style={{fontSize:"14px", margin:"5%"}}>
+    <Container style={{fontSize:"14px", margin:"auto", marginTop:"50px", height:"100vh"}}>
         <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{jobs.length>0 ? "Here's a List of all the Jobs Uploaded" : "Sorry no jobs created"}</h3>
         {jobs.map((job,index)=>{
             return(
-                <Col md={{ span: 10, offset: 1 }} style={{marginTop:"20px"}} key={index}>
+                <Col style={{marginTop:"20px"}} key={index}>
                 <Card border={'success'} >
                     <Card.Body>
                         <Card.Header style={{marginBottom:"20px",}}>
@@ -71,6 +71,15 @@ return(
                             <Col><b>Type of Payment</b>: <span className="text-success">{job.typeOfPayment}</span></Col>
                             <Col><b>Price</b>: <span className="text-success">{job.price}</span></Col>
                             <Col><b>Experience Needed</b>: <span className="text-success">{job.experienceNeeded}</span></Col>
+                            <Col>
+                            <Button variant="danger" onClick={() => {deleteThisJob(job._id)}}>
+                                <Link 
+                                style={{textDecoration:"none", color:"white"}} 
+                                to="/alljobs">
+                                    Delete 
+                                </Link>
+                            </Button>
+                            </Col>
                         </Row>
                     </Card.Body>
                 </Card>

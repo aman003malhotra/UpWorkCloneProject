@@ -21,7 +21,6 @@ const AdminPanel = () => {
         preload();  
     }, []);
 
-    console.log(profile)
     return(
         <>
         <Container>

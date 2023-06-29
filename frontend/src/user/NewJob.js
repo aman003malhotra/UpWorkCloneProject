@@ -25,15 +25,12 @@ const NewJob = () =>{
     };
 
     const {user, token} = isAuthenticated();
-    console.log("User",user);
-    console.log("Token", token)
 
     const onSubmit = event => {
         event.preventDefault();
         setValues({ ...values, error: false });
         newJob({ title, description, typeOfPayment, price, experienceNeeded}, user._id, token)
           .then(data => {
-            console.log(data)
             if (data.err) {
               setValues({ ...values, error: data.err, success: false });
             } else {
@@ -86,7 +83,7 @@ const NewJob = () =>{
         <div  style={{backgroundColor:"#1d4354"}}>
             <Menu />
         </div>
-        <Container style={{padding:"35px"}}>
+        <Container style={{padding:"35px", height:"100vh"}}>
             <Row >
                 <Col md={{ span: 6, offset: 3 }} style={{border:"2px solid black", padding:"30px", borderRadius:"7px"}}>
                     <h4 style={{ fontWeight:"900", paddingBottom:"10px"}}>Add a New Job</h4>

@@ -64,7 +64,6 @@ exports.updateJob = (req, res) => {
 
 
 exports.allJobs = (req,res) => {
-  console.log("All jobs")
     JobDescription.find()
     .exec((err, alljobs) => {
         if (err){
@@ -72,7 +71,6 @@ exports.allJobs = (req,res) => {
                 error:"No Product Found"
         })
     }
-    console.log(alljobs)
         res.json(alljobs);
     });
 };

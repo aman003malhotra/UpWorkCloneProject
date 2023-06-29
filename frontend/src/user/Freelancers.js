@@ -34,17 +34,16 @@ useEffect(() =>{
     preload()   
 }, []);
 
-console.log(profiles)
 return(
     <>
         <div style={{backgroundColor:"#1d4354"}}>
             <Menu />
         </div>
-        <Container style={{ margin:"5%"}}>
-        <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>Here's a List of all the Freelancers</h3>
+        <Container style={{ margin:"auto", marginTop:"50px", height:"100vh"}}>
+        <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{profiles.length>0 ? "Here's a List of all the Freelancers" : "Sorry no freelancers created Check again after some time"}</h3>
         {profiles.map((profile,index)=>{
             return(
-                <Col md={{ span: 10, offset:3 }} style={{marginTop:"20px"}} key={index}>
+                <Col style={{marginTop:"20px"}} key={index}>
                 <Card border={'success'} >
                     <Card.Body>
                         <Card.Header style={{marginBottom:"20px",}}>
@@ -58,7 +57,7 @@ return(
                         <Row>
                             <Col>Qualification: <p className="text-success">{profile.qualification}</p></Col>
                             <Col>Instituion: <p className="text-success">{profile.institution}</p></Col>
-                            <Col>Price: <p className="text-success">{profile.price}</p> </Col>
+                            <Col>Price: <p className="text-success">${profile.price}</p> </Col>
                             <Col><Button variant="success" block><Link style={{textDecoration:"none", color:"white"}} to="/freelancers" onClick={()=> {makeOffer(user._id, profile._id)}} >Hire</Link></Button></Col>
                         </Row>
                     </Card.Body>

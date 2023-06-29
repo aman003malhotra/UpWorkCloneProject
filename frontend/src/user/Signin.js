@@ -22,7 +22,6 @@ const Signin = () =>{
     };
 
     const onSubmit = event => {
-        console.log("Submitting");
         event.preventDefault();
         setValues({ ...values, error: false, loading: true });
         signin({ email, password })
@@ -31,7 +30,6 @@ const Signin = () =>{
                 console.log(data.error)
               setValues({ ...values, error: data.error, loading: false });
             } else {
-                console.log(data)
                 authenticate(data, () => {
                 setValues({
                   ...values,
@@ -54,9 +52,6 @@ const Signin = () =>{
           }
           else if(user && user.role === 2) {
             return <Redirect to="/jobs" />;
-          }
-          else if(user && user.role === 3) {
-            return <Redirect to="/chooserole" />;
           }
         }
     };
@@ -81,7 +76,7 @@ const Signin = () =>{
         <div  style={{backgroundColor:"#1d4354"}}>
             <Menu />
         </div>
-        <Container style={{padding:"35px"}}>
+        <Container style={{padding:"35px", height:"100vh"}}>
             <Row >
                 <Col md={{ span: 6, offset: 3 }} style={{border:"2px solid black", padding:"30px", borderRadius:"7px"}}>
                 <h4 style={{ fontWeight:"900", paddingBottom:"10px"}}>You already have an account, Login here</h4>

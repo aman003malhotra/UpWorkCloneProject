@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Menu from '../core/Menu';
-import { getAllProfiles } from '../auth/helper/profiles';
+import { getAllProfiles, deleteProfile } from '../auth/helper/profiles';
 import { Link } from "react-router-dom";
 import { Button, Container, Row, Col, Card, Nav } from 'react-bootstrap';
 import { isAuthenticated } from "../auth/helper/index";
@@ -19,6 +19,16 @@ const preload = () => {
             setProfiles(data)
         }
     });
+}
+
+const deleteThisProfile = (profileId) => {
+    deleteProfile(profileId).then(data => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          preload();
+        }
+      });
 }
 
 useEffect(() => {
@@ -43,17 +53,9 @@ return(
             </Nav.Item>
         </Nav>
     </Container>
-    <Container style={{fontSize:"14px", margin:"5%"}}>
+    <Container style={{fontSize:"14px", margin:"auto", marginTop:"50px", height:"100vh"}}>
         <h3 style={{ fontWeight:"900", paddingBottom:"10px", textAlign:"center"}}>{profiles.length>0 ? `Hi ${user.email}, Here are all the profiles uploaded` : "Sorry no Profile exist!"}</h3>
-        {profiles.length === 0 && (
-            <Button variant='secondary' block>
-                <Link 
-                style={{textDecoration:"none", color:"white"}} 
-                to="/add/job">
-                    Add New Job
-                </Link>
-            </Button>
-        )}
+        
         
         {profiles.map((profile,index)=>{
             return(
@@ -74,7 +76,15 @@ return(
                             <Col><b>Price:</b> <span className="text-success">{profile.price}</span> </Col>
                             <Col><b>Qualification:</b> <p className="text-success">{profile.qualification}</p></Col>
                             <Col><b>Institution:</b> <p className="text-success">{profile.institution}</p></Col>
-
+                            <Col>
+                            <Button variant="danger" onClick={() => {deleteThisProfile(profile._id)}}>
+                                <Link 
+                                style={{textDecoration:"none", color:"white"}} 
+                                to="/allprofiles">
+                                    Delete
+                                </Link>
+                            </Button>
+                            </Col>
                         </Row>
                     </Card.Body>
                 </Card>
